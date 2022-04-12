@@ -1,3 +1,7 @@
-/.idea/
-/spring5fs/sp5-chap02/.idea/
-/spring5fs/sp5-chap03/.idea/
+**/build/
+**/.idea
+**/.gradle
+**/src/main/webapp/WEB-INF/views/spring/resources/
+gradlew
+gradlew.bat
+settings.gradle

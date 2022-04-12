@@ -1,5 +1,2 @@
-package spring;
-
-public class MemberNotFoundException extends RuntimeException {
-
+package spring;public class MemberNotFoundException {
 }

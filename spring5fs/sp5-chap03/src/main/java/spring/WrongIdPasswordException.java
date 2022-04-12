@@ -1,5 +1,2 @@
-package spring;
-
-public class WrongIdPasswordException extends RuntimeException {
-
+package spring;public class WrongIdPasswordException {
 }
