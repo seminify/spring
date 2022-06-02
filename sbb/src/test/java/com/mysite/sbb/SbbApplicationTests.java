@@ -1,5 +1,6 @@
 package com.mysite.sbb;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.LocalDateTime;
@@ -19,13 +20,9 @@ class SbbApplicationTests {
 
 	@Test
 	void testJpa() {
-		Optional<Question> oq=this.questionRepository.findById(2);
-		assertTrue(oq.isPresent());
-		Question q=oq.get();
-		Answer a=new Answer();
-		a.setContent("네 자동으로 생성됩니다.");
-		a.setQuestion(q);
-		a.setCreateDate(LocalDateTime.now());
-		this.answerRepository.save(a);
+		Optional<Answer> oa = this.answerRepository.findById(1);
+		assertTrue(oa.isPresent());
+		Answer a = oa.get();
+		assertEquals(2, a.getQuestion().getId());
 	}
 }
