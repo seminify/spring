@@ -3,7 +3,6 @@ package com.mysite.sbb;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
@@ -17,10 +16,11 @@ class SbbApplicationTests {
 
 	@Test
 	void testJpa() {
+		assertEquals(2, this.questionRepository.count());
 		Optional<Question> oq = this.questionRepository.findById(1);
 		assertTrue(oq.isPresent());
-		Question q=oq.get();
-		q.setSubject("수정된 제목");
-		this.questionRepository.save(q);
+		Question q = oq.get();
+		this.questionRepository.delete(q);
+		assertEquals(1, this.questionRepository.count());
 	}
 }
