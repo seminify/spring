@@ -1,3 +1,15 @@
 spring:
   application:
     name: spring
+  datasource:
+    password: ${MYSQL_PASSWORD}
+    url: ${SPRING_URL}
+    username: ${MYSQL_USER}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        "[format_sql]": true
+        "[highlight_sql]": true
+    show-sql: true
