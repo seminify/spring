@@ -9,6 +9,7 @@
         "ms-azuretools.vscode-containers",
         "ms-vscode.live-server",
         "vscjava.vscode-java-pack",
+        "vmware.vscode-spring-boot",
         "esbenp.prettier-vscode"
       ]
     }
