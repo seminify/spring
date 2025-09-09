@@ -1,0 +1,6 @@
+services:
+  spring:
+    build: .devcontainer
+    volumes:
+      - ..:/workspaces:cached
+    command: sleep infinity

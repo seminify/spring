@@ -1,0 +1,16 @@
+{
+  "name": "spring",
+  "dockerComposeFile": ["../compose.yaml", "compose.yaml"],
+  "service": "spring",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-azuretools.vscode-containers",
+        "ms-vscode.live-server",
+        "vscjava.vscode-java-pack",
+        "esbenp.prettier-vscode"
+      ]
+    }
+  }
+}
