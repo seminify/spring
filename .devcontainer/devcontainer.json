@@ -10,8 +10,7 @@
         "ms-vscode.live-server",
         "vscjava.vscode-java-pack",
         "vmware.vscode-spring-boot",
-        "esbenp.prettier-vscode",
-        "Postman.postman-for-vscode"
+        "esbenp.prettier-vscode"
       ]
     }
   }
