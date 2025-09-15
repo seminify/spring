@@ -1,10 +1,10 @@
 services:
   spring:
-    image: gradle
+    image: docker.io/gradle
     env_file:
       - .env
   mysql:
-    image: mysql
+    image: docker.io/mysql
     volumes:
       - .mysql:/var/lib/mysql
     env_file:
