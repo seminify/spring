@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.seminify.application.user.UserMapper">
+    <delete id="delete" parameterType="org.seminify.application.user.UserDTO">
+<![CDATA[
+DELETE FROM `user`
+WHERE id = #{id};
+]]>
+    </delete>
+    <resultMap id="userDTO" type="org.seminify.application.user.UserDTO">
+        <id column="id" property="id" />
+        <result column="username" property="username" />
+        <result column="password" property="password" />
+        <collection columnPrefix="authority_" property="authorities"
+            resultMap="org.seminify.application.authority.AuthorityMapper.authorityDTO" />
+    </resultMap>
+    <select id="get" resultMap="userDTO">
+<![CDATA[
+SELECT id, username, password FROM `user`;
+]]>
+    </select>
+    <select id="loadUserByUsername" resultMap="userDTO">
+<![CDATA[
+SELECT a.id,
+    a.username,
+    a.password,
+    c.id authority_id,
+    c.authority authority_authority
+FROM `user` a
+    LEFT JOIN user_authority b ON a.id = b.user_id
+    LEFT JOIN authority c ON b.authority_id = c.id
+WHERE a.username = #{username};
+]]>
+    </select>
+    <insert id="post" keyProperty="id" parameterType="org.seminify.application.user.UserDTO"
+        useGeneratedKeys="true">
+<![CDATA[
+INSERT INTO `user` (username, password) VALUES(#{username}, #{password});
+]]>
+    </insert>
+</mapper>

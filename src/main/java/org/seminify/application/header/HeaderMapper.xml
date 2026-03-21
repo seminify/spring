@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.seminify.application.header.HeaderMapper">
+    <delete id="delete" parameterType="org.seminify.application.header.HeaderDTO">
+<![CDATA[
+DELETE FROM header
+WHERE id = #{id};
+]]>
+    </delete>
+    <resultMap id="headerDTO" type="org.seminify.application.header.HeaderDTO">
+        <id column="id" property="id" />
+        <result column="header" property="header" />
+        <result column="src" property="src" />
+        <association columnPrefix="authority_" property="authority"
+            resultMap="org.seminify.application.authority.AuthorityMapper.authorityDTO" />
+    </resultMap>
+    <select id="get" resultMap="headerDTO">
+<![CDATA[
+SELECT id,
+    header,
+    src,
+    authority_id
+FROM header;
+]]>
+    </select>
+    <insert id="post" parameterType="org.seminify.application.header.HeaderDTO">
+<![CDATA[
+INSERT INTO header (header, src, authority_id)
+VALUES(#{header}, #{src}, #{authority.id});
+]]>
+    </insert>
+</mapper>
