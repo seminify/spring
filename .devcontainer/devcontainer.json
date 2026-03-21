@@ -1,0 +1,17 @@
+{
+  "name": "application",
+  "dockerComposeFile": "./compose.yaml",
+  "service": "application",
+  "workspaceFolder": "/application",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "esbenp.prettier-vscode",
+        "redhat.vscode-xml",
+        "mtxr.sqltools",
+        "vscjava.vscode-java-pack",
+        "vmware.vscode-spring-boot"
+      ]
+    }
+  }
+}

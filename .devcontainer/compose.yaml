@@ -1,0 +1,21 @@
+services:
+  application:
+    build: ./
+    command: sleep infinity
+    env_file:
+      - ./.env
+    ports:
+      - "8080:8080"
+    volumes:
+      - ../:/application
+      - ./.vscode-server:/root/.vscode-server
+      - ./.m2:/root/.m2
+  mysql:
+    command:
+      - --collation-server=utf8mb4_general_ci
+      - --innodb-dedicated-server=on
+    env_file:
+      - ./.env
+    image: docker.io/mysql
+    ports:
+      - "3306:3306"
