@@ -43,7 +43,7 @@ public class SecurityConfiguration {
                                 .authorizeHttpRequests(
                                                 authorizationManagerRequestMatcherRegistry -> authorizationManagerRequestMatcherRegistry
                                                                 .requestMatchers("/anonymous/**").permitAll()
-                                                                .requestMatchers("/admin/**").hasAuthority("ADMIN")
+                                                                .requestMatchers("/admin/**").hasRole("ADMIN")
                                                                 .anyRequest().authenticated())
                                 .csrf(CsrfConfigurer::spa)
                                 .exceptionHandling(exceptionHandlingConfigurer -> exceptionHandlingConfigurer

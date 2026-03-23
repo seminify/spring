@@ -11,7 +11,7 @@ public interface HeaderMapper {
 
     List<HeaderDTO> get();
 
-    List<HeaderDTO> getByAuthorities(List<AuthorityDTO> authorities);
+    List<HeaderDTO> getByAuthority(AuthorityDTO authorityDTO);
 
     void post(HeaderDTO headerDTO);
 }

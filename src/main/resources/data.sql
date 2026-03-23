@@ -3,8 +3,8 @@ INSERT INTO `authority` (`id`, `authority`, `order`)
 VALUES (1, 'ROLE_ADMIN', 3),
     (2, 'ROLE_USER', 2),
     (3, 'ROLE_ANONYMOUS', 1);
-INSERT INTO `header` (`id`, `header`, `src`, `authority_id`)
-VALUES (1, 'user', 'user', 2);
+INSERT INTO `header` (`id`, `header`, `src`, `authority_id`, `order`)
+VALUES (1, 'user', 'user', 2, 1);
 INSERT INTO `user` (`id`, `password`, `username`)
 VALUES (
         1,

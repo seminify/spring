@@ -12,4 +12,5 @@ public class HeaderDTO {
     private String header;
     private String src;
     private AuthorityDTO authority;
+    private Long order;
 }

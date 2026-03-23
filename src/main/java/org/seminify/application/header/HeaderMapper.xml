@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.seminify.application.header.HeaderMapper">
-    <delete id="delete" parameterType="org.seminify.application.header.HeaderDTO">
+    <delete id="delete">
 <![CDATA[
 DELETE FROM header
 WHERE id = #{id};
@@ -11,6 +11,7 @@ WHERE id = #{id};
         <id column="id" property="id" />
         <result column="header" property="header" />
         <result column="src" property="src" />
+        <result column="order" property="order" />
         <association columnPrefix="authority_" property="authority"
             resultMap="org.seminify.application.authority.AuthorityMapper.authorityDTO" />
     </resultMap>
@@ -19,31 +20,28 @@ WHERE id = #{id};
 SELECT id,
     header,
     src,
-    authority_id
-FROM header;
+    authority_id,
+    `order`
+FROM header
+ORDER BY `order` DESC;
 ]]>
     </select>
-    <select id="getByAuthorities" resultMap="headerDTO">
+    <select id="getByAuthority" resultMap="headerDTO">
 <![CDATA[
 SELECT a.id,
     a.header,
     a.src,
-    a.authority_id
+    a.authority_id,
+    a.`order`
 FROM header a
     JOIN authority b ON a.authority_id = b.id
-WHERE b.authority IN
+WHERE b.authority = #{authority};
 ]]>
-<foreach close=")" collection="authorities"
-            item="authority" open="(" separator=",">
-<![CDATA[
-#{authority.authority}
-]]>
-    </foreach>
     </select>
-    <insert id="post" parameterType="org.seminify.application.header.HeaderDTO">
+    <insert id="post">
 <![CDATA[
-INSERT INTO header (header, src, authority_id)
-VALUES(#{header}, #{src}, #{authority.id});
+INSERT INTO header (header, src, authority_id, `order`)
+VALUES(#{header}, #{src}, #{authority.id}, #{order});
 ]]>
     </insert>
 </mapper>

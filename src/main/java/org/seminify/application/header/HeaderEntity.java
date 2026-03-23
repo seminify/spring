@@ -5,6 +5,7 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 
 import org.seminify.application.authority.AuthorityEntity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -27,4 +28,6 @@ public class HeaderEntity {
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "authority_id")
     private AuthorityEntity authorityEntity;
+    @Column(nullable = false)
+    private Long order;
 }

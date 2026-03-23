@@ -1,17 +1,15 @@
-package org.seminify.application.anonymous.header;
+package org.seminify.application.header;
 
 import java.util.List;
 
 import org.seminify.application.authority.AuthorityDTO;
-import org.seminify.application.header.HeaderDTO;
-import org.seminify.application.header.HeaderService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
 
-@RequestMapping("anonymous/header")
+@RequestMapping("user/header")
 @RestController
 @RequiredArgsConstructor
 public class HeaderController {
@@ -19,6 +17,6 @@ public class HeaderController {
 
     @GetMapping
     public List<HeaderDTO> get() {
-        return headerService.getByAuthority(new AuthorityDTO().setAuthority("ROLE_ANONYMOUS"));
+        return headerService.getByAuthority(new AuthorityDTO().setAuthority("ROLE_USER"));
     }
 }
