@@ -31,6 +31,6 @@ public class UserController {
 
     @PostMapping
     public void post(@RequestBody UserDTO userDTO) {
-        userService.postAdminUser(userDTO);
+        userService.postAdmin(userDTO);
     }
 }

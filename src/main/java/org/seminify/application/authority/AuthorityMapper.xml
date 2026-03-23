@@ -10,10 +10,15 @@ WHERE id = #{id};
     <resultMap id="authorityDTO" type="org.seminify.application.authority.AuthorityDTO">
         <id column="id" property="id" />
         <result column="authority" property="authority" />
+        <result column="order" property="order" />
     </resultMap>
     <select id="get" resultMap="authorityDTO">
 <![CDATA[
-SELECT id, authority FROM authority;
+SELECT id,
+    authority,
+    `order`
+FROM authority
+ORDER BY `order` DESC;
 ]]>
     </select>
     <insert id="post" parameterType="org.seminify.application.authority.AuthorityDTO">
@@ -25,7 +30,8 @@ INSERT INTO authority (authority) VALUES(#{authority});
         resultMap="authorityDTO">
 <![CDATA[
 SELECT id,
-    authority
+    authority,
+    `order`
 FROM authority
 WHERE authority = #{authority};
 ]]>

@@ -20,4 +20,6 @@ public class AuthorityEntity {
     private Long id;
     @Column(nullable = false, unique = true)
     private String authority;
+    @Column(nullable = false)
+    private Long order;
 }

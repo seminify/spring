@@ -28,8 +28,10 @@ CREATE TABLE `SPRING_SESSION_ATTRIBUTES` (
 CREATE TABLE IF NOT EXISTS `authority` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `authority` varchar(255) NOT NULL,
+  `order` bigint NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY (`authority`)
+  UNIQUE KEY (`authority`),
+  KEY (`order`)
 );
 CREATE TABLE IF NOT EXISTS `header` (
   `id` bigint NOT NULL AUTO_INCREMENT,

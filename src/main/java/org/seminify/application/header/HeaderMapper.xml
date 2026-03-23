@@ -23,6 +23,23 @@ SELECT id,
 FROM header;
 ]]>
     </select>
+    <select id="getByAuthorities" resultMap="headerDTO">
+<![CDATA[
+SELECT a.id,
+    a.header,
+    a.src,
+    a.authority_id
+FROM header a
+    JOIN authority b ON a.authority_id = b.id
+WHERE b.authority IN
+]]>
+<foreach close=")" collection="authorities"
+            item="authority" open="(" separator=",">
+<![CDATA[
+#{authority.authority}
+]]>
+    </foreach>
+    </select>
     <insert id="post" parameterType="org.seminify.application.header.HeaderDTO">
 <![CDATA[
 INSERT INTO header (header, src, authority_id)

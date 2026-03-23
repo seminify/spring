@@ -1,6 +1,6 @@
 package org.seminify.application.user;
 
-import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class UserController {
     @GetMapping
-    public ResponseEntity<?> get() {
-        return ResponseEntity.ok().build();
+    public UserDTO get(@AuthenticationPrincipal UserDTO userDTO) {
+        return userDTO;
     }
 }

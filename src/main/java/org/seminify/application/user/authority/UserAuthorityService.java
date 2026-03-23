@@ -30,8 +30,13 @@ public class UserAuthorityService {
         userAuthorityMapper.post(userAuthorityDTO);
     }
 
-    public void postAdminUser(UserDTO userDTO) {
+    public void postAdmin(UserDTO userDTO) {
         userAuthorityMapper.post(new UserAuthorityDTO().setUser(userDTO)
-                .setAuthority(authorityService.getByAuthority(new AuthorityDTO().setAuthority("ADMIN"))));
+                .setAuthority(authorityService.getByAuthority(new AuthorityDTO().setAuthority("ROME_ADMIN"))));
+    }
+
+    public void postUser(UserDTO userDTO) {
+        userAuthorityMapper.post(new UserAuthorityDTO().setUser(userDTO)
+                .setAuthority(authorityService.getByAuthority(new AuthorityDTO().setAuthority("ROME_USER"))));
     }
 }

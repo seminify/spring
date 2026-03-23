@@ -2,6 +2,7 @@ package org.seminify.application.header;
 
 import java.util.List;
 
+import org.seminify.application.authority.AuthorityDTO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,6 +21,11 @@ public class HeaderService {
     @Transactional(readOnly = true)
     public List<HeaderDTO> get() {
         return headerMapper.get();
+    }
+
+    @Transactional(readOnly = true)
+    public List<HeaderDTO> getByAuthorities(List<AuthorityDTO> authorities) {
+        return headerMapper.getByAuthorities(authorities);
     }
 
     public void post(HeaderDTO headerDTO) {

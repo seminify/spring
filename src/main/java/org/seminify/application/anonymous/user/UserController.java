@@ -1,4 +1,4 @@
-package org.seminify.application.open.user;
+package org.seminify.application.anonymous.user;
 
 import org.seminify.application.user.UserDTO;
 import org.seminify.application.user.UserService;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
 
-@RequestMapping("open/user")
+@RequestMapping("anonymous/user")
 @RestController
 @RequiredArgsConstructor
 public class UserController {
@@ -17,6 +17,6 @@ public class UserController {
 
     @PostMapping
     public void post(@RequestBody UserDTO userDTO) {
-        userService.post(userDTO);
+        userService.postUser(userDTO);
     }
 }

@@ -10,4 +10,5 @@ import lombok.experimental.Accessors;
 public class AuthorityDTO implements GrantedAuthority {
     private Long id;
     private String authority;
+    private Long order;
 }
