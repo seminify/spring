@@ -26,7 +26,7 @@ FROM header
 ORDER BY `order` DESC;
 ]]>
     </select>
-    <select id="getByAuthority" resultMap="headerDTO">
+    <select id="getByAuthorities" resultMap="headerDTO">
 <![CDATA[
 SELECT a.id,
     a.header,
@@ -35,7 +35,16 @@ SELECT a.id,
     a.`order`
 FROM header a
     JOIN authority b ON a.authority_id = b.id
-WHERE b.authority = #{authority};
+WHERE b.authority IN
+]]>
+<foreach close=")" collection="authorities"
+            item="authority" open="(" separator=",">
+<![CDATA[
+#{authority.authority}
+]]>
+</foreach>
+<![CDATA[
+ORDER BY a.`order` DESC;
 ]]>
     </select>
     <insert id="post">

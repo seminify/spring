@@ -24,8 +24,8 @@ public class HeaderService {
     }
 
     @Transactional(readOnly = true)
-    public List<HeaderDTO> getByAuthority(AuthorityDTO authorityDTO) {
-        return headerMapper.getByAuthority(authorityDTO);
+    public List<HeaderDTO> getByAuthorities(List<AuthorityDTO> authorities) {
+        return headerMapper.getByAuthorities(authorities);
     }
 
     public void post(HeaderDTO headerDTO) {
