@@ -1,4 +1,4 @@
-package org.seminify.application.admin.header;
+package org.seminify.application.controller.admin.header;
 
 import java.util.List;
 

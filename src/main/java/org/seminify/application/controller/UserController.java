@@ -1,5 +1,6 @@
-package org.seminify.application.user;
+package org.seminify.application.controller;
 
+import org.seminify.application.user.UserDTO;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

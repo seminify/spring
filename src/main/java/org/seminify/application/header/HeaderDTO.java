@@ -9,8 +9,9 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class HeaderDTO {
     private Long id;
-    private String header;
+    private String title;
     private String src;
-    private AuthorityDTO authority;
     private Long order;
+    private HeaderDTO header;
+    private AuthorityDTO authority;
 }

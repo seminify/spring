@@ -3,16 +3,25 @@ INSERT INTO `authority` (`id`, `authority`, `order`)
 VALUES (1, 'ROLE_ADMIN', 3),
     (2, 'ROLE_USER', 2),
     (3, 'ROLE_ANONYMOUS', 1);
-INSERT INTO `header` (`id`, `header`, `src`, `authority_id`, `order`)
-VALUES (1, 'header', '/admin/header', 1, 3),
-    (2, 'authority', '/admin/authority', 1, 2),
-    (3, 'user', '/admin/user', 1, 1),
+INSERT INTO `header` (
+        `id`,
+        `header_id`,
+        `authority_id`,
+        `title`,
+        `src`,
+        `order`
+    )
+VALUES (1, NULL, 1, 'admin', '/admin', 5),
+    (2, 1, 1, 'header', '/admin/header', 4),
+    (3, 1, 1, 'authority', '/admin/authority', 3),
+    (4, 1, 1, 'user', '/admin/user', 2),
     (
+        5,
         4,
+        1,
         'userAuthority',
         '/admin/user/authority',
-        1,
-        4
+        1
     );
 INSERT INTO `user` (`id`, `password`, `username`)
 VALUES (

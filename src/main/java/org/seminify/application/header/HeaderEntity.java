@@ -23,11 +23,14 @@ public class HeaderEntity {
     @GeneratedValue(strategy = IDENTITY)
     @Id
     private Long id;
-    private String header;
+    private String title;
     private String src;
+    @Column(nullable = false)
+    private Long order;
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "header_id")
+    private HeaderEntity headerEntity;
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "authority_id")
     private AuthorityEntity authorityEntity;
-    @Column(nullable = false)
-    private Long order;
 }

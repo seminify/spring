@@ -35,11 +35,13 @@ CREATE TABLE IF NOT EXISTS `authority` (
 );
 CREATE TABLE IF NOT EXISTS `header` (
   `id` bigint NOT NULL AUTO_INCREMENT,
-  `header` varchar(255) NOT NULL,
-  `src` varchar(255) NOT NULL,
+  `header_id` bigint,
   `authority_id` bigint NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `src` varchar(255) NOT NULL,
   `order` bigint NOT NULL,
   PRIMARY KEY (`id`),
+  FOREIGN KEY (`header_id`) REFERENCES `header` (`id`) ON DELETE CASCADE,
   FOREIGN KEY (`authority_id`) REFERENCES `authority` (`id`) ON DELETE CASCADE,
   KEY (`order`)
 );

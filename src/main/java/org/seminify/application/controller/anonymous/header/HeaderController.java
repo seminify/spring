@@ -1,4 +1,4 @@
-package org.seminify.application.anonymous.header;
+package org.seminify.application.controller.anonymous.header;
 
 import java.util.List;
 

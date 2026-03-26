@@ -1,4 +1,4 @@
-package org.seminify.application.admin.authority;
+package org.seminify.application.controller.admin.authority;
 
 import java.util.List;
 
