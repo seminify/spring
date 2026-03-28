@@ -1,0 +1,10 @@
+{
+  "plugins": [
+    "@prettier/plugin-xml",
+    "prettier-plugin-java",
+    "prettier-plugin-sql"
+  ],
+  "xmlWhitespaceSensitivity": "preserve",
+  "keywordCase": "upper",
+  "dataTypeCase": "upper"
+}

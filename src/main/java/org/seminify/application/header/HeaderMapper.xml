@@ -1,22 +1,30 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.seminify.application.header.HeaderMapper">
-    <delete id="delete">
+  <delete id="delete">
 <![CDATA[
 DELETE FROM header
 WHERE id = #{id};
 ]]>
     </delete>
-    <resultMap id="headerDTO" type="org.seminify.application.header.HeaderDTO">
-        <id column="id" property="id" />
-        <result column="title" property="title" />
-        <result column="src" property="src" />
-        <result column="order" property="order" />
-        <association columnPrefix="header_" property="header" resultMap="headerDTO" />
-        <association columnPrefix="authority_" property="authority"
-            resultMap="org.seminify.application.authority.AuthorityMapper.authorityDTO" />
-    </resultMap>
-    <select id="get" resultMap="headerDTO">
+  <resultMap id="headerDTO" type="org.seminify.application.header.HeaderDTO">
+    <id column="id" property="id" />
+    <result column="title" property="title" />
+    <result column="src" property="src" />
+    <result column="order" property="order" />
+    <association
+      columnPrefix="header_"
+      property="header"
+      resultMap="headerDTO"
+    />
+    <association
+      columnPrefix="authority_"
+      property="authority"
+      resultMap="org.seminify.application.authority.AuthorityMapper.authorityDTO"
+    />
+  </resultMap>
+  <select id="get" resultMap="headerDTO">
 <![CDATA[
 SELECT id,
     header_id,
@@ -28,7 +36,7 @@ FROM header
 ORDER BY `order` DESC;
 ]]>
     </select>
-    <select id="getByAuthorities" resultMap="headerDTO">
+  <select id="getByAuthorities" resultMap="headerDTO">
 <![CDATA[
 SELECT a.id,
     a.header_id,
@@ -40,8 +48,13 @@ FROM header a
     JOIN authority b ON a.authority_id = b.id
 WHERE b.authority IN
 ]]>
-<foreach close=")" collection="authorities"
-            item="authority" open="(" separator=",">
+<foreach
+      close=")"
+      collection="authorities"
+      item="authority"
+      open="("
+      separator=","
+    >
 <![CDATA[
 #{authority.authority}
 ]]>
@@ -50,7 +63,7 @@ WHERE b.authority IN
 ORDER BY a.`order` DESC;
 ]]>
     </select>
-    <insert id="post">
+  <insert id="post">
 <![CDATA[
 INSERT INTO header (header_id, authority_id, title, src, `order`)
 VALUES(

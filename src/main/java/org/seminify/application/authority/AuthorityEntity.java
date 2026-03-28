@@ -15,11 +15,14 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class AuthorityEntity {
-    @GeneratedValue(strategy = IDENTITY)
-    @Id
-    private Long id;
-    @Column(nullable = false, unique = true)
-    private String authority;
-    @Column(nullable = false)
-    private Long order;
+
+  @GeneratedValue(strategy = IDENTITY)
+  @Id
+  private Long id;
+
+  @Column(nullable = false, unique = true)
+  private String authority;
+
+  @Column(nullable = false)
+  private Long order;
 }

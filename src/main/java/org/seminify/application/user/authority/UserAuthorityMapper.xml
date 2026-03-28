@@ -1,25 +1,35 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.seminify.application.user.authority.UserAuthorityMapper">
-    <delete id="delete">
+  <delete id="delete">
 <![CDATA[
 DELETE FROM user_authority
 WHERE id = #{id};
 ]]>
     </delete>
-    <resultMap id="userAuthorityDTO" type="org.seminify.application.user.authority.UserAuthorityDTO">
-        <id column="id" property="id" />
-        <association columnPrefix="user_" property="user"
-            resultMap="org.seminify.application.user.UserMapper.userDTO" />
-        <association columnPrefix="authority_" property="authority"
-            resultMap="org.seminify.application.authority.AuthorityMapper.authorityDTO" />
-    </resultMap>
-    <select id="get" resultMap="userAuthorityDTO">
+  <resultMap
+    id="userAuthorityDTO"
+    type="org.seminify.application.user.authority.UserAuthorityDTO"
+  >
+    <id column="id" property="id" />
+    <association
+      columnPrefix="user_"
+      property="user"
+      resultMap="org.seminify.application.user.UserMapper.userDTO"
+    />
+    <association
+      columnPrefix="authority_"
+      property="authority"
+      resultMap="org.seminify.application.authority.AuthorityMapper.authorityDTO"
+    />
+  </resultMap>
+  <select id="get" resultMap="userAuthorityDTO">
 <![CDATA[
 SELECT id, user_id, authority_id FROM user_authority;
 ]]>
     </select>
-    <insert id="post">
+  <insert id="post">
 <![CDATA[
 INSERT INTO user_authority (user_id, authority_id) VALUES(#{user.id}, #{authority.id});
 ]]>

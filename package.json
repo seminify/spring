@@ -1,0 +1,7 @@
+{
+  "devDependencies": {
+    "@prettier/plugin-xml": "^3.4.2",
+    "prettier-plugin-java": "^2.8.1",
+    "prettier-plugin-sql": "^0.20.0"
+  }
+}

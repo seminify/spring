@@ -1,7 +1,3 @@
 mybatis:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-spring:
-  sql:
-    init:
-      mode: always

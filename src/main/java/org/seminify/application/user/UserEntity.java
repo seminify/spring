@@ -15,11 +15,14 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class UserEntity {
-    @GeneratedValue(strategy = IDENTITY)
-    @Id
-    private Long id;
-    @Column(nullable = false, unique = true)
-    private String username;
-    @Column(nullable = false)
-    private String password;
+
+  @GeneratedValue(strategy = IDENTITY)
+  @Id
+  private Long id;
+
+  @Column(nullable = false, unique = true)
+  private String username;
+
+  @Column(nullable = false)
+  private String password;
 }
