@@ -7,6 +7,8 @@ import org.apache.ibatis.annotations.Mapper;
 public interface AuthorityMapper {
   void delete(AuthorityDTO authorityDTO);
   List<AuthorityDTO> get();
-  void post(AuthorityDTO authorityDTO);
+  AuthorityDTO getById(AuthorityDTO authorityDTO);
   AuthorityDTO getByAuthority(AuthorityDTO authorityDTO);
+  void post(AuthorityDTO authorityDTO);
+  void put(AuthorityDTO authorityDTO);
 }

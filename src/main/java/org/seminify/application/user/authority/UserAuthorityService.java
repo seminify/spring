@@ -25,6 +25,11 @@ public class UserAuthorityService {
     return userAuthorityMapper.get();
   }
 
+  @Transactional(readOnly = true)
+  public UserAuthorityDTO getById(UserAuthorityDTO userAuthorityDTO) {
+    return userAuthorityMapper.getById(userAuthorityDTO);
+  }
+
   public void post(UserAuthorityDTO userAuthorityDTO) {
     userAuthorityMapper.post(userAuthorityDTO);
   }
@@ -51,5 +56,9 @@ public class UserAuthorityService {
           )
         )
     );
+  }
+
+  public void put(UserAuthorityDTO userAuthorityDTO) {
+    userAuthorityMapper.put(userAuthorityDTO);
   }
 }

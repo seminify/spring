@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.seminify.application.nav.NavMapper">
+  <delete id="delete">
+<![CDATA[
+DELETE FROM nav
+WHERE
+  id = #{id};
+]]>
+    </delete>
+  <resultMap id="navDTO" type="org.seminify.application.nav.NavDTO">
+    <id column="id" property="id" />
+    <result column="title" property="title" />
+    <result column="src" property="src" />
+    <result column="order" property="order" />
+    <association columnPrefix="nav_" property="nav" resultMap="navDTO" />
+    <association
+      columnPrefix="authority_"
+      property="authority"
+      resultMap="org.seminify.application.authority.AuthorityMapper.authorityDTO"
+    />
+  </resultMap>
+  <select id="get" resultMap="navDTO">
+<![CDATA[
+SELECT
+  id,
+  nav_id,
+  authority_id,
+  title,
+  src,
+  `order`
+FROM
+  nav
+ORDER BY
+  `order` DESC;
+]]>
+    </select>
+  <select id="getById" resultMap="navDTO">
+<![CDATA[
+SELECT
+  id,
+  nav_id,
+  authority_id,
+  title,
+  src,
+  `order`
+FROM
+  nav
+WHERE
+  id = #{id};
+]]>
+    </select>
+  <select id="getByAuthorities" resultMap="navDTO">
+<![CDATA[
+SELECT
+  a.id,
+  a.nav_id,
+  a.authority_id,
+  a.title,
+  a.src,
+  a.`order`
+FROM
+  nav a
+  JOIN authority b ON a.authority_id = b.id
+WHERE
+  b.authority IN
+]]>
+<foreach
+      close=")"
+      collection="authorities"
+      item="authority"
+      open="("
+      separator=","
+    >
+<![CDATA[
+#{authority.authority}
+]]>
+</foreach>
+<![CDATA[
+ORDER BY
+  a.`order` DESC;
+]]>
+    </select>
+  <insert id="post">
+<![CDATA[
+INSERT INTO
+  nav (nav_id, authority_id, title, src, `order`)
+VALUES
+  (#{nav.id}, #{authority.id}, #{title}, #{src}, #{order});
+]]>
+    </insert>
+  <update id="put">
+<![CDATA[
+UPDATE nav
+SET
+  nav_id = #{nav.id},
+  authority_id = #{authority.id},
+  title = #{title},
+  src = #{src},
+  `order` = #{order}
+WHERE
+  id = #{id};
+]]>
+  </update>
+</mapper>

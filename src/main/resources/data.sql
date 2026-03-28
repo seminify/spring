@@ -7,9 +7,9 @@ VALUES
   (3, 'ROLE_ANONYMOUS', 1);
 
 INSERT INTO
-  `header` (
+  `nav` (
     `id`,
-    `header_id`,
+    `nav_id`,
     `authority_id`,
     `title`,
     `src`,
@@ -18,7 +18,7 @@ INSERT INTO
 VALUES
   (1, NULL, 1, 'admin', '/admin', 5),
   (2, 1, 1, 'admin/authority', '/admin/authority', 4),
-  (3, 1, 1, 'admin/header', '/admin/header', 3),
+  (3, 1, 1, 'admin/nav', '/admin/nav', 3),
   (4, 1, 1, 'admin/user', '/admin/user', 2),
   (
     5,

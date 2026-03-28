@@ -12,13 +12,18 @@ public class AuthorityService {
 
   private final AuthorityMapper authorityMapper;
 
+  public void delete(AuthorityDTO authorityDTO) {
+    authorityMapper.delete(authorityDTO);
+  }
+
   @Transactional(readOnly = true)
   public List<AuthorityDTO> get() {
     return authorityMapper.get();
   }
 
-  public void post(AuthorityDTO authorityDTO) {
-    authorityMapper.post(authorityDTO);
+  @Transactional(readOnly = true)
+  public AuthorityDTO getById(AuthorityDTO authorityDTO) {
+    return authorityMapper.getById(authorityDTO);
   }
 
   @Transactional(readOnly = true)
@@ -26,7 +31,11 @@ public class AuthorityService {
     return authorityMapper.getByAuthority(authorityDTO);
   }
 
-  public void delete(AuthorityDTO authorityDTO) {
-    authorityMapper.delete(authorityDTO);
+  public void post(AuthorityDTO authorityDTO) {
+    authorityMapper.post(authorityDTO);
+  }
+
+  public void put(AuthorityDTO authorityDTO) {
+    authorityMapper.put(authorityDTO);
   }
 }

@@ -5,7 +5,7 @@ DROP TABLE IF EXISTS `SPRING_SESSION`;
 
 DROP TABLE IF EXISTS `user_authority`;
 
-DROP TABLE IF EXISTS `header`;
+DROP TABLE IF EXISTS `nav`;
 
 DROP TABLE IF EXISTS `authority`;
 
@@ -42,15 +42,15 @@ CREATE TABLE IF NOT EXISTS `authority` (
   KEY (`order`)
 );
 
-CREATE TABLE IF NOT EXISTS `header` (
+CREATE TABLE IF NOT EXISTS `nav` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
-  `header_id` BIGINT,
+  `nav_id` BIGINT,
   `authority_id` BIGINT NOT NULL,
   `title` VARCHAR(255) NOT NULL,
   `src` VARCHAR(255) NOT NULL,
   `order` BIGINT NOT NULL,
   PRIMARY KEY (`id`),
-  FOREIGN KEY (`header_id`) REFERENCES `header` (`id`) ON DELETE CASCADE,
+  FOREIGN KEY (`nav_id`) REFERENCES `nav` (`id`) ON DELETE CASCADE,
   FOREIGN KEY (`authority_id`) REFERENCES `authority` (`id`) ON DELETE CASCADE,
   KEY (`order`)
 );

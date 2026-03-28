@@ -1,4 +1,4 @@
-package org.seminify.application.header;
+package org.seminify.application.nav;
 
 import static jakarta.persistence.FetchType.LAZY;
 import static jakarta.persistence.GenerationType.IDENTITY;
@@ -15,10 +15,10 @@ import lombok.experimental.Accessors;
 import org.seminify.application.authority.AuthorityEntity;
 
 @Entity
-@Table(name = "header")
+@Table(name = "nav")
 @Data
 @Accessors(chain = true)
-public class HeaderEntity {
+public class NavEntity {
 
   @GeneratedValue(strategy = IDENTITY)
   @Id
@@ -31,8 +31,8 @@ public class HeaderEntity {
   private Long order;
 
   @ManyToOne(fetch = LAZY)
-  @JoinColumn(name = "header_id")
-  private HeaderEntity headerEntity;
+  @JoinColumn(name = "nav_id")
+  private NavEntity navEntity;
 
   @ManyToOne(fetch = LAZY)
   @JoinColumn(name = "authority_id")

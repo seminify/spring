@@ -31,6 +31,11 @@ public class UserService implements UserDetailsService {
     return userMapper.get();
   }
 
+  @Transactional(readOnly = true)
+  public UserDTO getById(UserDTO userDTO) {
+    return userMapper.getById(userDTO);
+  }
+
   @Override
   @Transactional(readOnly = true)
   public UserDetails loadUserByUsername(String username)
@@ -61,5 +66,11 @@ public class UserService implements UserDetailsService {
   public void postUser(UserDTO userDTO) {
     post(userDTO);
     userAuthorityService.postUser(userDTO);
+  }
+
+  public void put(UserDTO userDTO) {
+    userMapper.put(
+      userDTO.setPassword(bCryptPasswordEncoder.encode(userDTO.getPassword()))
+    );
   }
 }
