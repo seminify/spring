@@ -12,9 +12,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@RequiredArgsConstructor
 @Service
 @Transactional
-@RequiredArgsConstructor
 public class UserService implements UserDetailsService {
 
   private final UserMapper userMapper;
@@ -61,11 +61,6 @@ public class UserService implements UserDetailsService {
   public void postAdmin(UserDTO userDTO) {
     post(userDTO);
     userAuthorityService.postAdmin(userDTO);
-  }
-
-  public void postUser(UserDTO userDTO) {
-    post(userDTO);
-    userAuthorityService.postUser(userDTO);
   }
 
   public void put(UserDTO userDTO) {

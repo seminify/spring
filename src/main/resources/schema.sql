@@ -9,6 +9,8 @@ DROP TABLE IF EXISTS `nav`;
 
 DROP TABLE IF EXISTS `authority`;
 
+DROP TABLE IF EXISTS `todo`;
+
 DROP TABLE IF EXISTS `user`;
 
 CREATE TABLE `SPRING_SESSION` (
@@ -72,3 +74,13 @@ CREATE TABLE IF NOT EXISTS `user_authority` (
   FOREIGN KEY (`authority_id`) REFERENCES `authority` (`id`) ON DELETE CASCADE,
   FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE
 );
+
+CREATE TABLE if NOT EXISTS `todo` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `user_id` BIGINT NOT NULL,
+  `title` VARCHAR(255) NOT NULL,
+  `enable` bit (1) NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE,
+  key (`enable`)
+)

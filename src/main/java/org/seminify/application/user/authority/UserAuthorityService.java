@@ -8,9 +8,9 @@ import org.seminify.application.user.UserDTO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@RequiredArgsConstructor
 @Service
 @Transactional
-@RequiredArgsConstructor
 public class UserAuthorityService {
 
   private final UserAuthorityMapper userAuthorityMapper;
@@ -40,19 +40,7 @@ public class UserAuthorityService {
         .setUser(userDTO)
         .setAuthority(
           authorityService.getByAuthority(
-            new AuthorityDTO().setAuthority("ROME_ADMIN")
-          )
-        )
-    );
-  }
-
-  public void postUser(UserDTO userDTO) {
-    userAuthorityMapper.post(
-      new UserAuthorityDTO()
-        .setUser(userDTO)
-        .setAuthority(
-          authorityService.getByAuthority(
-            new AuthorityDTO().setAuthority("ROME_USER")
+            new AuthorityDTO().setAuthority("ROLE_ADMIN")
           )
         )
     );

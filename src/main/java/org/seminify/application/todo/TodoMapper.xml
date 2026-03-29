@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.seminify.application.todo.TodoMapper">
+  <delete id="delete">
+<![CDATA[
+DELETE FROM todo
+WHERE
+  id = #{todoDTO.id}
+  AND user_id = #{userDTO.id};
+]]>
+  </delete>
+  <resultMap id="todoDTO" type="org.seminify.application.todo.TodoDTO">
+    <id column="id" property="id" />
+    <result column="title" property="title" />
+    <result column="enable" property="enable" />
+    <association
+      columnPrefix="user_"
+      property="user"
+      resultMap="org.seminify.application.user.UserMapper.userDTO"
+    />
+  </resultMap>
+  <select id="getByUser" resultMap="todoDTO">
+<![CDATA[
+SELECT
+  id,
+  user_id,
+  title,
+  enable
+FROM
+  todo
+WHERE
+  user_id = #{id}
+ORDER BY
+  id DESC;
+]]>
+  </select>
+  <insert id="post">
+<![CDATA[
+INSERT INTO
+  todo (user_id, title, enable)
+VALUES
+  (#{userDTO.id}, #{todoDTO.title}, #{todoDTO.enable});
+]]>
+  </insert>
+  <update id="put">
+<![CDATA[
+UPDATE todo
+SET
+  title = #{todoDTO.title},
+  enable = #{todoDTO.enable}
+WHERE
+  id = #{todoDTO.id}
+  AND user_id = #{userDTO.id};
+]]>
+  </update>
+</mapper>

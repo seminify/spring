@@ -51,10 +51,12 @@ public class SecurityConfiguration {
       )
       .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry ->
         authorizationManagerRequestMatcherRegistry
-          .requestMatchers("/anonymous/**")
-          .permitAll()
           .requestMatchers("/admin/**")
           .hasRole("ADMIN")
+          .requestMatchers("/user/**")
+          .hasRole("USER")
+          .requestMatchers("/anonymous/**")
+          .permitAll()
           .anyRequest()
           .authenticated()
       )

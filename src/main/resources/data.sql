@@ -16,13 +16,15 @@ INSERT INTO
     `order`
   )
 VALUES
-  (1, NULL, 1, 'admin', '/admin', 5),
-  (2, 1, 1, 'admin/authority', '/admin/authority', 4),
-  (3, 1, 1, 'admin/nav', '/admin/nav', 3),
-  (4, 1, 1, 'admin/user', '/admin/user', 2),
+  (1, NULL, 2, 'user', '/user', 7),
+  (2, 1, 2, 'user/todo', '/user/todo', 6),
+  (3, NULL, 1, 'admin', '/admin', 5),
+  (4, 3, 1, 'admin/authority', '/admin/authority', 4),
+  (5, 3, 1, 'admin/nav', '/admin/nav', 3),
+  (6, 3, 1, 'admin/user', '/admin/user', 2),
   (
-    5,
-    4,
+    7,
+    6,
     1,
     'admin/user/authority',
     '/admin/user/authority',
@@ -30,15 +32,21 @@ VALUES
   );
 
 INSERT INTO
-  `user` (`id`, `password`, `username`)
+  `user` (`id`, `username`, `password`)
 VALUES
   (
     1,
-    '$2a$10$TQvSjapCjxnufCPLndExNuBCnbxUMcSfMQyOqLhUDagtPHxXz1Qd2',
-    'admin'
+    'admin',
+    '$2a$10$TQvSjapCjxnufCPLndExNuBCnbxUMcSfMQyOqLhUDagtPHxXz1Qd2'
+  ),
+  (
+    2,
+    'user',
+    '$2a$10$TQvSjapCjxnufCPLndExNuBCnbxUMcSfMQyOqLhUDagtPHxXz1Qd2'
   );
 
 INSERT INTO
   `user_authority` (`id`, `user_id`, `authority_id`)
 VALUES
-  (1, 1, 1);
+  (1, 1, 1),
+  (2, 2, 2);

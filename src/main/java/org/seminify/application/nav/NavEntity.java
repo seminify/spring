@@ -3,7 +3,6 @@ package org.seminify.application.nav;
 import static jakarta.persistence.FetchType.LAZY;
 import static jakarta.persistence.GenerationType.IDENTITY;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -24,17 +23,15 @@ public class NavEntity {
   @Id
   private Long id;
 
-  private String title;
-  private String src;
-
-  @Column(nullable = false)
-  private Long order;
-
-  @ManyToOne(fetch = LAZY)
   @JoinColumn(name = "nav_id")
+  @ManyToOne(fetch = LAZY)
   private NavEntity navEntity;
 
-  @ManyToOne(fetch = LAZY)
   @JoinColumn(name = "authority_id")
+  @ManyToOne(fetch = LAZY)
   private AuthorityEntity authorityEntity;
+
+  private String title;
+  private String src;
+  private Long order;
 }

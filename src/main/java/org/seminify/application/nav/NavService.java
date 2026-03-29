@@ -6,9 +6,9 @@ import org.seminify.application.authority.AuthorityDTO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@RequiredArgsConstructor
 @Service
 @Transactional
-@RequiredArgsConstructor
 public class NavService {
 
   private final NavMapper navMapper;

@@ -1,26 +1,25 @@
-package org.seminify.application.user.authority;
+package org.seminify.application.todo;
 
 import static jakarta.persistence.FetchType.LAZY;
-import static jakarta.persistence.GenerationType.IDENTITY;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.experimental.Accessors;
-import org.seminify.application.authority.AuthorityEntity;
 import org.seminify.application.user.UserEntity;
 
 @Entity
-@Table(name = "user_authority")
+@Table(name = "todo")
 @Data
 @Accessors(chain = true)
-public class UserAuthorityEntity {
+public class TodoEntity {
 
-  @GeneratedValue(strategy = IDENTITY)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Id
   private Long id;
 
@@ -28,7 +27,6 @@ public class UserAuthorityEntity {
   @ManyToOne(fetch = LAZY)
   private UserEntity userEntity;
 
-  @JoinColumn(name = "authority_id")
-  @ManyToOne(fetch = LAZY)
-  private AuthorityEntity authorityEntity;
+  private String title;
+  private boolean enable;
 }

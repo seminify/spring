@@ -2,7 +2,6 @@ package org.seminify.application.authority;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -20,9 +19,6 @@ public class AuthorityEntity {
   @Id
   private Long id;
 
-  @Column(nullable = false, unique = true)
   private String authority;
-
-  @Column(nullable = false)
   private Long order;
 }

@@ -11,7 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 public class UserDTO implements UserDetails {
 
   private Long id;
+  private List<AuthorityDTO> authorities;
   private String username;
   private String password;
-  private List<AuthorityDTO> authorities;
 }
