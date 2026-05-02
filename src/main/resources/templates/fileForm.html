@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2 th:if="${message}" th:text="${message}"></h2>
+    <form method="post" enctype="multipart/form-data">
+      <div>
+        <label for="file">File to upload: </label>
+        <input type="file" name="file" id="file" />
+      </div>
+      <button type="submit">upload</button>
+    </form>
+    <ul>
+      <li th:each="file : ${files}">
+        <a th:href="${file}" th:text="${file}"></a>
+      </li>
+    </ul>
+  </body>
+</html>
